@@ -12,11 +12,16 @@ import {
 const router = express.Router();
 
 // Route for retrieving all users (requires authentication and admin authorization)
-router.get("/all", isAuthenticated, isAuthorized("Admin"), getAllUsers);
+router.get(
+  "library-management-system-backend-gilt.vercel.app/all",
+  isAuthenticated,
+  isAuthorized("Admin"),
+  getAllUsers
+);
 
 // Route for registering a new admin (requires authentication and admin authorization)
 router.post(
-  "/add/new-admin",
+  "library-management-system-backend-gilt.vercel.app/add/new-admin",
   isAuthenticated,
   isAuthorized("Admin"),
   registerNewAdmin
