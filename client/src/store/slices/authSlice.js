@@ -160,12 +160,16 @@ export const resetAuthSlice = () => (dispatch) => {
 export const register = (data) => async (dispatch) => {
   dispatch(authSlice.actions.registerRequest());
   await axios
-    .post("http://localhost:5000/api/v1/auth/register", data, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    .post(
+      "library-management-system-backend-gilt.vercel.app/api/v1/auth/register",
+      data,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then((res) => {
       dispatch(authSlice.actions.registerSuccess(res.data));
     })
@@ -178,7 +182,7 @@ export const otpVerification = (email, otp) => async (dispatch) => {
   dispatch(authSlice.actions.otpVerificationRequest());
   await axios
     .post(
-      "http://localhost:5000/api/v1/auth/verify-otp",
+      "library-management-system-backend-gilt.vercel.app/api/v1/auth/verify-otp",
       { email, otp },
       {
         withCredentials: true,
@@ -200,12 +204,16 @@ export const otpVerification = (email, otp) => async (dispatch) => {
 export const login = (data) => async (dispatch) => {
   dispatch(authSlice.actions.loginRequest());
   await axios
-    .post("http://localhost:5000/api/v1/auth/login", data, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    .post(
+      "library-management-system-backend-gilt.vercel.app/api/v1/auth/login",
+      data,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then((res) => {
       dispatch(authSlice.actions.loginSuccess(res.data));
     })
@@ -217,9 +225,12 @@ export const login = (data) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch(authSlice.actions.logoutRequest());
   await axios
-    .get("http://localhost:5000/api/v1/auth/logout", {
-      withCredentials: true,
-    })
+    .get(
+      "library-management-system-backend-gilt.vercel.app/api/v1/auth/logout",
+      {
+        withCredentials: true,
+      }
+    )
     .then((res) => {
       dispatch(authSlice.actions.logoutSuccess(res.data.message));
       dispatch(authSlice.actions.resetAuthSlice());
@@ -232,7 +243,7 @@ export const logout = () => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   dispatch(authSlice.actions.getUserRequest());
   await axios
-    .get("http://localhost:5000/api/v1/auth/me", {
+    .get("library-management-system-backend-gilt.vercel.app/api/v1/auth/me", {
       withCredentials: true,
     })
     .then((res) => {
@@ -247,7 +258,7 @@ export const forgetPassword = (email) => async (dispatch) => {
   dispatch(authSlice.actions.forgetPasswordRequest());
   await axios
     .post(
-      "http://localhost:5000/api/v1/auth/password/forget",
+      "library-management-system-backend-gilt.vercel.app/api/v1/auth/password/forget",
       { email },
       {
         withCredentials: true,
@@ -270,12 +281,16 @@ export const resetPassword = (data, token) => async (dispatch) => {
   // console.log("token:", token);
   dispatch(authSlice.actions.resetPasswordRequest());
   await axios
-    .put(`http://localhost:5000/api/v1/auth/password/reset/${token}`, data, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    .put(
+      `library-management-system-backend-gilt.vercel.app/api/v1/auth/password/reset/${token}`,
+      data,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then((res) => {
       dispatch(authSlice.actions.resetPasswordSuccess(res.data));
     })
@@ -289,10 +304,14 @@ export const resetPassword = (data, token) => async (dispatch) => {
 export const updatePassword = (data) => async (dispatch) => {
   dispatch(authSlice.actions.updatePasswordRequest());
   await axios
-    .put("http://localhost:5000/api/v1/auth/password/update", data, {
-      withCredentials: true,
-      headers: { "Content-Type": "application/json" },
-    })
+    .put(
+      "library-management-system-backend-gilt.vercel.app/api/v1/auth/password/update",
+      data,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      }
+    )
     .then((res) => {
       dispatch(authSlice.actions.updatePasswordSuccess(res.data.message));
     })

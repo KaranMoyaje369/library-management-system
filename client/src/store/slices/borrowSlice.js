@@ -82,9 +82,12 @@ const borrowSlice = createSlice({
 export const fetchUserBorrowedBooks = () => async (dispatch) => {
   dispatch(borrowSlice.actions.fetchUserBorrowedBooksRequest());
   await axios
-    .get("http://localhost:5000/api/v1/borrow/my-borrowed-books", {
-      withCredentials: true,
-    })
+    .get(
+      "library-management-system-backend-gilt.vercel.app/api/v1/borrow/my-borrowed-books",
+      {
+        withCredentials: true,
+      }
+    )
     .then((res) => {
       dispatch(
         borrowSlice.actions.fetchUserBorrowedBooksSuccess(
@@ -104,9 +107,12 @@ export const fetchUserBorrowedBooks = () => async (dispatch) => {
 export const fetchAllBorrowedBooks = () => async (dispatch) => {
   dispatch(borrowSlice.actions.fetchAllBorrowedBooksRequest());
   await axios
-    .get("http://localhost:5000/api/v1/borrow/borrowed-books-by-users", {
-      withCredentials: true,
-    })
+    .get(
+      "library-management-system-backend-gilt.vercel.app/api/v1/borrow/borrowed-books-by-users",
+      {
+        withCredentials: true,
+      }
+    )
     .then((res) => {
       dispatch(
         borrowSlice.actions.fetchAllBorrowedBooksSuccess(res.data.borrowedBooks)
@@ -125,7 +131,7 @@ export const recordBorrowedBook = (id, email) => async (dispatch) => {
   dispatch(borrowSlice.actions.recordBookRequest());
   await axios
     .post(
-      `http://localhost:5000/api/v1/borrow/record-borrow-book/${id}`,
+      `library-management-system-backend-gilt.vercel.app/api/v1/borrow/record-borrow-book/${id}`,
       { email },
       {
         withCredentials: true,
@@ -147,7 +153,7 @@ export const returnBook = (email, id) => async (dispatch) => {
   dispatch(borrowSlice.actions.returnBookRequest());
   await axios
     .put(
-      `http://localhost:5000/api/v1/borrow/return-borrowed-book/${id}`,
+      `library-management-system-backend-gilt.vercel.app/api/v1/borrow/return-borrowed-book/${id}`,
       { email },
       {
         withCredentials: true,
