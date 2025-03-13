@@ -43,7 +43,7 @@ const AdminDashboard = () => {
 
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalAdmin, setTotalAdmin] = useState(0);
-  const [totalBooks, setTotalBooks] = useState((books && books.length) || 0);
+  const [totalBooks, setTotalBooks] = useState(books.length);
   const [totalBorrowedBooks, setTotalBorrowedBooks] = useState(0);
   const [totalReturnedBooks, setTotalReturnedBooks] = useState(0);
 
