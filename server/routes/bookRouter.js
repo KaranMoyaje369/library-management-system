@@ -14,23 +14,14 @@ import express from "express"; // Import Express.js
 const router = express.Router();
 
 // Route for adding a new book (requires authentication and admin authorization)
-router.post(
-  "library-management-system-backend-gilt.vercel.app/admin/add",
-  isAuthenticated,
-  isAuthorized("Admin"),
-  addBook
-);
+router.post("/admin/add", isAuthenticated, isAuthorized("Admin"), addBook);
 
 // Route for retrieving all books (requires authentication)
-router.get(
-  "library-management-system-backend-gilt.vercel.app/all",
-  isAuthenticated,
-  getAllBooks
-);
+router.get("/all", isAuthenticated, getAllBooks);
 
 // Route for deleting a book (requires authentication and admin authorization)
 router.delete(
-  "library-management-system-backend-gilt.vercel.app/delete/:id",
+  "/delete/:id",
   isAuthenticated,
   isAuthorized("Admin"),
   deleteBook

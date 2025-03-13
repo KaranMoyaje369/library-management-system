@@ -15,52 +15,28 @@ import { isAuthenticated } from "../middlewares/authMiddleware.js"; // Import au
 const router = express.Router();
 
 // Route for user registration
-router.post(
-  "library-management-system-backend-gilt.vercel.app/register",
-  register
-);
+router.post("/register", register);
 
 // Route for verifying OTP (One-Time Password)
-router.post(
-  "library-management-system-backend-gilt.vercel.app/verify-otp",
-  verifyOTP
-);
+router.post("/verify-otp", verifyOTP);
 
 // Route for user login
-router.post("library-management-system-backend-gilt.vercel.app/login", login);
+router.post("/login", login);
 
 // Route for user logout (requires authentication)
-router.get(
-  "library-management-system-backend-gilt.vercel.app/logout",
-  isAuthenticated,
-  logout
-);
+router.get("/logout", isAuthenticated, logout);
 
 // Route to get the currently logged-in user's details (requires authentication)
-router.get(
-  "library-management-system-backend-gilt.vercel.app/me",
-  isAuthenticated,
-  getUser
-);
+router.get("/me", isAuthenticated, getUser);
 
 // Route for handling forgot password requests
-router.post(
-  "library-management-system-backend-gilt.vercel.app/password/forget",
-  forgetPassword
-);
+router.post("/password/forget", forgetPassword);
 
 // Route for resetting the user's password (requires a valid reset token)
-router.put(
-  "library-management-system-backend-gilt.vercel.app/password/reset/:token",
-  resetPassword
-);
+router.put("/password/reset/:token", resetPassword);
 
 // Route for updating the user's password (requires authentication)
-router.put(
-  "library-management-system-backend-gilt.vercel.app/password/update",
-  isAuthenticated,
-  updatePassword
-);
+router.put("/password/update", isAuthenticated, updatePassword);
 
 // Export the router
 export default router;
