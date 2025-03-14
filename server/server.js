@@ -13,3 +13,7 @@ const PORT = process.env.PORT || 5000; // Use the PORT environment variable or d
 
 // Start the server
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully!");
+});
