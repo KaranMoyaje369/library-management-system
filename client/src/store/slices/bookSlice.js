@@ -52,7 +52,10 @@ const bookSlice = createSlice({
 export const fetchAllBooks = () => async (dispatch) => {
   dispatch(bookSlice.actions.fetchBookRequest());
   await axios
-    .get("http://localhost:5000/api/v1/book/all", { withCredentials: true })
+    .get(
+      "https://library-management-system-server-mium.onrender.com/api/v1/book/all",
+      { withCredentials: true }
+    )
     .then((res) => {
       dispatch(bookSlice.actions.fetchBookSuccess(res.data.books));
     })
@@ -64,12 +67,16 @@ export const fetchAllBooks = () => async (dispatch) => {
 export const addBook = (data) => async (dispatch) => {
   dispatch(bookSlice.actions.addBookRequest());
   await axios
-    .post("http://localhost:5000/api/v1/book/admin/add", data, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    .post(
+      "https://library-management-system-server-mium.onrender.com/api/v1/book/admin/add",
+      data,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then((res) => {
       dispatch(bookSlice.actions.addBookSuccess(res.data.message));
       dispatch(toggleAddBookPopup());

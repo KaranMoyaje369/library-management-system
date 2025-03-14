@@ -82,9 +82,12 @@ const borrowSlice = createSlice({
 export const fetchUserBorrowedBooks = () => async (dispatch) => {
   dispatch(borrowSlice.actions.fetchUserBorrowedBooksRequest());
   await axios
-    .get("http://localhost:5000/api/v1/borrow/my-borrowed-books", {
-      withCredentials: true,
-    })
+    .get(
+      "https://library-management-system-server-mium.onrender.com/api/v1/borrow/my-borrowed-books",
+      {
+        withCredentials: true,
+      }
+    )
     .then((res) => {
       dispatch(
         borrowSlice.actions.fetchUserBorrowedBooksSuccess(
